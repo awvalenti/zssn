@@ -8,15 +8,15 @@ public class Survivor {
 	private String name;
 	private int age;
 	private Gender gender;
+	private boolean zombie;
 	private Location location;
 	private Set<Item> inventory;
 
-	public Survivor(String name, int age, Gender gender, Location location, Set<Item> inventory) {
-		this.name = name;
-		this.age = age;
-		this.gender = gender;
-		this.location = location;
-		this.inventory = inventory;
+	public Survivor() {
+	}
+
+	public Survivor(long id) {
+		setId(id);
 	}
 
 	public Long getId() {
@@ -65,6 +65,14 @@ public class Survivor {
 
 	public void setInventory(Set<Item> inventory) {
 		this.inventory = inventory;
+	}
+
+	public boolean isZombie() {
+		return zombie;
+	}
+
+	public void setZombie(boolean zombie) {
+		this.zombie = zombie;
 	}
 
 }

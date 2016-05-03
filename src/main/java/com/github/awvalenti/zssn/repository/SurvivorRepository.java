@@ -7,7 +7,15 @@ import com.github.awvalenti.zssn.model.Survivor;
 
 public class SurvivorRepository {
 
-	private final List<Survivor> data = new ArrayList<>();
+	private final List<Survivor> data;
+
+	public SurvivorRepository() {
+		this(new ArrayList<Survivor>());
+	}
+
+	public SurvivorRepository(List<Survivor> survivors) {
+		data = survivors;
+	}
 
 	public void add(Survivor survivor) {
 		data.add(survivor);
