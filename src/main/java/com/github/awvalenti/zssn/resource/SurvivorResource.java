@@ -5,29 +5,25 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 import com.github.awvalenti.zssn.model.Survivor;
-import com.github.awvalenti.zssn.repository.LocationRepository;
 import com.github.awvalenti.zssn.repository.SurvivorRepository;
 
 @Path("/survivors")
 public class SurvivorResource {
 
-	private final SurvivorRepository repo;
-	private final LocationRepository locationRepo;
+	private final SurvivorRepository survivorRepo;
 
-	public SurvivorResource(SurvivorRepository survivorRepo, LocationRepository locationRepo) {
-		this.repo = survivorRepo;
-		this.locationRepo = locationRepo;
+	public SurvivorResource(SurvivorRepository survivorRepo) {
+		this.survivorRepo = survivorRepo;
 	}
 
 	@POST
 	public void post(Survivor survivor) {
-		repo.add(survivor);
-		locationRepo.add(survivor.getLocation());
+		survivorRepo.add(survivor);
 	}
 
 	@GET
 	public Survivor getOne(long id) {
-		return repo.getOne(id);
+		return survivorRepo.getOne(id);
 	}
 
 }

@@ -22,10 +22,11 @@ public class LocationResourceTest {
 
 	@Before
 	public void setUp() throws Exception {
-		LocationRepository locationRepo = new LocationRepository();
+		SurvivorRepository survivorRepo = new SurvivorRepository();
+		LocationRepository locationRepo = new LocationRepository(survivorRepo);
 		locationResource = new LocationResource(locationRepo);
 		johnDoe = new Survivor("John Doe", 21, Gender.MALE, new Location(1, 1), new HashSet<Item>());
-		new SurvivorResource(new SurvivorRepository(), locationRepo).post(johnDoe);
+		new SurvivorResource(survivorRepo).post(johnDoe);
 	}
 
 	@Test

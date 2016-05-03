@@ -1,24 +1,21 @@
 package com.github.awvalenti.zssn.repository;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.github.awvalenti.zssn.model.Location;
 
 public class LocationRepository {
 
-	private final List<Location> data;
+	private final SurvivorRepository survivorRepo;
 
-	public LocationRepository() {
-		this.data = new ArrayList<>();
+	public LocationRepository(SurvivorRepository survivorRepo) {
+		this.survivorRepo = survivorRepo;
 	}
 
 	public Location getOne(long survivorId) {
-		return data.get((int) survivorId - 1);
+		return survivorRepo.getOne(survivorId).getLocation();
 	}
 
-	public void add(Location location) {
-		data.add(location);
+	public void update(long survivorId, Location newLocation) {
+		survivorRepo.getOne(survivorId).setLocation(newLocation);
 	}
 
 }

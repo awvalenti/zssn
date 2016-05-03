@@ -13,7 +13,6 @@ import com.github.awvalenti.zssn.model.Gender;
 import com.github.awvalenti.zssn.model.Item;
 import com.github.awvalenti.zssn.model.Location;
 import com.github.awvalenti.zssn.model.Survivor;
-import com.github.awvalenti.zssn.repository.LocationRepository;
 import com.github.awvalenti.zssn.repository.SurvivorRepository;
 
 public class SurvivorResourceTest {
@@ -22,7 +21,7 @@ public class SurvivorResourceTest {
 
 	@Before
 	public void setUp() throws Exception {
-		survivorResource = new SurvivorResource(new SurvivorRepository(), new LocationRepository());
+		survivorResource = new SurvivorResource(new SurvivorRepository());
 	}
 
 	@Test
