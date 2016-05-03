@@ -1,7 +1,5 @@
 package com.github.awvalenti.zssn.resource;
 
-import java.util.List;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -28,8 +26,8 @@ public class SurvivorResource {
 	}
 
 	@GET
-	public List<Survivor> getAll() {
-		return repo.getAll();
+	public Survivor getOne(long id) {
+		return repo.getOne(id);
 	}
 
 }

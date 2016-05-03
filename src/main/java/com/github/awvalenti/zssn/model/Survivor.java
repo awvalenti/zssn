@@ -1,5 +1,7 @@
 package com.github.awvalenti.zssn.model;
 
+import java.util.Set;
+
 public class Survivor {
 
 	private Long id;
@@ -7,12 +9,14 @@ public class Survivor {
 	private int age;
 	private Gender gender;
 	private Location location;
+	private Set<Item> inventory;
 
-	public Survivor(String name, int age, Gender gender, Location location) {
+	public Survivor(String name, int age, Gender gender, Location location, Set<Item> inventory) {
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
 		this.location = location;
+		this.inventory = inventory;
 	}
 
 	public Long getId() {
@@ -53,6 +57,14 @@ public class Survivor {
 
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+
+	public Set<Item> getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Set<Item> inventory) {
+		this.inventory = inventory;
 	}
 
 }

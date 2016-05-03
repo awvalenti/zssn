@@ -13,7 +13,7 @@ public class LocationRepository {
 		this.data = new ArrayList<>();
 	}
 
-	public Location getById(long survivorId) {
+	public Location getOne(long survivorId) {
 		return data.get((int) survivorId - 1);
 	}
 

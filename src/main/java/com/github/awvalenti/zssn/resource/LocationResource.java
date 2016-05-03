@@ -12,13 +12,13 @@ public class LocationResource {
 	}
 
 	public void put(long survivorId, Location newLocation) {
-		Location oldLocation = repo.getById(survivorId);
+		Location oldLocation = repo.getOne(survivorId);
 		oldLocation.setLatitude(newLocation.getLatitude());
 		oldLocation.setLongitude(newLocation.getLongitude());
 	}
 
-	public Location getOne(Long survivorId) {
-		return repo.getById(survivorId);
+	public Location getOne(long survivorId) {
+		return repo.getOne(survivorId);
 	}
 
 }

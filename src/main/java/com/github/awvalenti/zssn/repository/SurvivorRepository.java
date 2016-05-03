@@ -1,7 +1,6 @@
 package com.github.awvalenti.zssn.repository;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import com.github.awvalenti.zssn.model.Survivor;
@@ -15,8 +14,8 @@ public class SurvivorRepository {
 		survivor.setId((long) data.size());
 	}
 
-	public List<Survivor> getAll() {
-		return Collections.unmodifiableList(data);
+	public Survivor getOne(long id) {
+		return data.get((int) id - 1);
 	}
 
 }
