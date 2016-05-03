@@ -1,6 +1,10 @@
 - The name Survivor seems to be a misfit for one situation. Person might
   be a better name. At any time, a person may become a zombie,
   and will still be a person. But zombies shouldn't be considered survivors.
+
+- Resource and Item are two names for the same concept.
+  I decided to use Item since the word resource might
+  get confused with REST resource.
   
 - Infected and contamined seem to be the same concept.
   However, some points of the specification suggest
