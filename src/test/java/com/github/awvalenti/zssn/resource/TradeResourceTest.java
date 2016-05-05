@@ -19,7 +19,7 @@ public class TradeResourceTest {
 
 		server.start();
 
-		String responseBody = ClientBuilder.newClient().target("http://localhost:8081/zssn")
+		String responseBody = ClientBuilder.newClient().target(server.getBaseUri())
 				.path("trades")
 				.request(MediaType.APPLICATION_JSON)
 				.post(Entity.text("test"))
