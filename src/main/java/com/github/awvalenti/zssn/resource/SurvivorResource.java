@@ -3,6 +3,7 @@ package com.github.awvalenti.zssn.resource;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
 import com.github.awvalenti.zssn.model.Survivor;
 import com.github.awvalenti.zssn.repository.SurvivorRepository;
@@ -22,7 +23,8 @@ public class SurvivorResource {
 	}
 
 	@GET
-	public Survivor getOne(long id) {
+	@Path("{id}")
+	public Survivor getOne(@PathParam("id") long id) {
 		return survivorRepo.getOne(id);
 	}
 
