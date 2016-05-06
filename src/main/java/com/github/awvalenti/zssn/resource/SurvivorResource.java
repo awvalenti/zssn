@@ -8,7 +8,7 @@ import javax.ws.rs.PathParam;
 import com.github.awvalenti.zssn.model.Survivor;
 import com.github.awvalenti.zssn.repository.SurvivorRepository;
 
-@Path("/survivors")
+@Path("survivors")
 public class SurvivorResource {
 
 	private final SurvivorRepository survivorRepo;
