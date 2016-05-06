@@ -1,6 +1,5 @@
 package com.github.awvalenti.zssn.model;
 
-import java.util.Set;
 
 public class Survivor {
 
@@ -10,7 +9,7 @@ public class Survivor {
 	private Gender gender;
 	private boolean zombie;
 	private Location location;
-	private Set<Item> inventory;
+	private ItemCollection inventory;
 
 	public Survivor() {
 	}
@@ -59,11 +58,11 @@ public class Survivor {
 		this.location = location;
 	}
 
-	public Set<Item> getInventory() {
+	public ItemCollection getInventory() {
 		return inventory;
 	}
 
-	public void setInventory(Set<Item> inventory) {
+	public void setInventory(ItemCollection inventory) {
 		this.inventory = inventory;
 	}
 

@@ -10,21 +10,33 @@ public class ItemCollection {
 	private final Map<Item, Integer> amountsPerItem;
 
 	/**
-	 * Creates an ItemCollection with specified items and quantities.
-	 * Usage: ItemCollection.with(item0, quantity0, item1, quantity1, item2, quantity2...)
-	 * @param args Item/quantity pairs
+	 * Creates an ItemCollection with specified items and quantities. Usage:
+	 * ItemCollection.with(item0, quantity0, item1, quantity1, item2, quantity2...)
+	 *
+	 * @param args
+	 *            Item/quantity pairs
 	 * @return the ItemCollection
 	 */
 	public static ItemCollection with(Object... args) {
 		Map<Item, Integer> map = new HashMap<>();
 
 		for (int i = 0; i < args.length; i += 2) {
+			assertParameter(args[i], Item.class);
+			assertParameter(args[i + 1], Integer.class);
+
 			Item key = (Item) args[i];
 			Integer value = (Integer) args[i + 1];
 			map.put(key, value);
 		}
 
 		return new ItemCollection(map);
+	}
+
+	private static void assertParameter(Object object, Class<?> clazz) {
+		if (!clazz.isInstance(object)) {
+			throw new IllegalArgumentException(object + " should be instance of " + clazz
+					+ ", but its class is " + object.getClass() + ".");
+		}
 	}
 
 	private ItemCollection(Map<Item, Integer> amountsPerItem) {
