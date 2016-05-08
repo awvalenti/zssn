@@ -9,8 +9,12 @@ import com.github.awvalenti.zssn.domain.service.TradeService;
 @Path("trades")
 public class TradeResource {
 
+	private final TradeService tradeService;
+
 	@Inject
-	private TradeService tradeService;
+	public TradeResource(TradeService tradeService) {
+		this.tradeService = tradeService;
+	}
 
 	@POST
 	public String post() {

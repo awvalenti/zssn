@@ -1,5 +1,6 @@
 package com.github.awvalenti.zssn.repository;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import com.github.awvalenti.zssn.domain.entity.Survivor;
@@ -8,6 +9,7 @@ public class SurvivorRepository {
 
 	private final EntityManager em;
 
+	@Inject
 	public SurvivorRepository(EntityManager em) {
 		this.em = em;
 	}

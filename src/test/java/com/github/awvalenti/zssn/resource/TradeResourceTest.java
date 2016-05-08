@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.junit.Test;
 
-import com.github.awvalenti.zssn.testsupport.httpserver.TestHttpServer;
+import com.github.awvalenti.zssn.config.TestHttpServer;
 
 public class TradeResourceTest {
 

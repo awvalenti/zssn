@@ -1,12 +1,11 @@
-package com.github.awvalenti.zssn.testsupport.httpserver;
+package com.github.awvalenti.zssn.config;
 
 import java.net.URI;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
-import org.glassfish.jersey.server.ResourceConfig;
 
-import com.github.awvalenti.zssn.config.DependencyInjectionBinder;
+import com.github.awvalenti.zssn.config.ApplicationResourceConfig;
 
 public class TestHttpServer {
 
@@ -21,9 +20,7 @@ public class TestHttpServer {
 
 		server = GrizzlyHttpServerFactory.createHttpServer(
 				URI.create(getBaseUri()),
-				new ResourceConfig().register(new DependencyInjectionBinder()).packages(
-						"com.github.awvalenti.zssn.resource"));
-
+				new ApplicationResourceConfig());
 	}
 
 	public void stop() {
