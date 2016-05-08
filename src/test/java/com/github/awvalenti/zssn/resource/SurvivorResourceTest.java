@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.MediaType;
 
 import org.junit.After;
 import org.junit.Before;
@@ -25,18 +24,22 @@ public class SurvivorResourceTest {
 
 	@Test
 	public void should_add_survivor() {
-		ClientBuilder.newClient().target(server.getBaseUri())
+		String a = ClientBuilder.newClient().target(server.getBaseUri())
 				.path("survivors")
-				.request(MediaType.APPLICATION_JSON)
-				.post(Entity.text("test"));
+				.request()
+				.post(Entity.json(""
+						+ "{\"name\":\"John Doe\",\"age\":21,\"gender\":\"MALE\",\"zombie\":false,\"location\":null,\"inventory\":[]}"
+						+ ""), String.class);
+
+		System.out.println("A: " + a);
 
 		String string = ClientBuilder.newClient().target(server.getBaseUri())
 				.path("survivors")
 				.path("1")
-				.request(MediaType.APPLICATION_JSON)
+				.request()
 				.get(String.class);
 
-		assertThat(string, is("{}"));
+		assertThat(string, is("{\"name\": \"Teste\",\"age\": 15}"));
 	}
 
 	@After
