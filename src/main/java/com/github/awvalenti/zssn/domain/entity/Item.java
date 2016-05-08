@@ -1,4 +1,4 @@
-package com.github.awvalenti.zssn.model;
+package com.github.awvalenti.zssn.domain.entity;
 
 public enum Item {
 

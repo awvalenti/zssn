@@ -5,7 +5,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-import com.github.awvalenti.zssn.model.Survivor;
+import com.github.awvalenti.zssn.domain.entity.Survivor;
 import com.github.awvalenti.zssn.repository.SurvivorRepository;
 
 @Path("survivors")

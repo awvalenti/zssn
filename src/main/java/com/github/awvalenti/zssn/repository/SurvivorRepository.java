@@ -2,7 +2,7 @@ package com.github.awvalenti.zssn.repository;
 
 import javax.persistence.EntityManager;
 
-import com.github.awvalenti.zssn.model.Survivor;
+import com.github.awvalenti.zssn.domain.entity.Survivor;
 
 public class SurvivorRepository {
 

@@ -1,6 +1,6 @@
 package com.github.awvalenti.zssn.resource;
 
-import com.github.awvalenti.zssn.model.Location;
+import com.github.awvalenti.zssn.domain.entity.Location;
 import com.github.awvalenti.zssn.repository.LocationRepository;
 
 public class LocationResource {

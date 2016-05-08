@@ -1,11 +1,13 @@
-package com.github.awvalenti.zssn.model;
+package com.github.awvalenti.zssn.domain.entity;
 
-import static com.github.awvalenti.zssn.model.Item.*;
+import static com.github.awvalenti.zssn.domain.entity.Item.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.github.awvalenti.zssn.domain.entity.ItemCollection;
 
 public class ItemCollectionTest {
 

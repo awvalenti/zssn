@@ -1,6 +1,6 @@
 package com.github.awvalenti.zssn.repository;
 
-import com.github.awvalenti.zssn.model.Location;
+import com.github.awvalenti.zssn.domain.entity.Location;
 
 public class LocationRepository {
 

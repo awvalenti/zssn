@@ -2,7 +2,7 @@ package com.github.awvalenti.zssn.repository;
 
 import java.util.List;
 
-import com.github.awvalenti.zssn.model.ContaminationFlag;
+import com.github.awvalenti.zssn.domain.entity.ContaminationFlag;
 
 public interface ContaminationFlagRepository {
 

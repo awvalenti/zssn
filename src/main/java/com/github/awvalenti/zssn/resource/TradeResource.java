@@ -4,7 +4,7 @@ import javax.inject.Inject;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
-import com.github.awvalenti.zssn.service.TradeService;
+import com.github.awvalenti.zssn.domain.service.TradeService;
 
 @Path("trades")
 public class TradeResource {

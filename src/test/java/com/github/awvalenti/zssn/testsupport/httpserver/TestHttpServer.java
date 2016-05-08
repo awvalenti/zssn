@@ -1,4 +1,4 @@
-package com.github.awvalenti.zssn.httpserver;
+package com.github.awvalenti.zssn.testsupport.httpserver;
 
 import java.net.URI;
 

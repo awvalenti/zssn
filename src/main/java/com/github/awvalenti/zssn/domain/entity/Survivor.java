@@ -1,4 +1,4 @@
-package com.github.awvalenti.zssn.model;
+package com.github.awvalenti.zssn.domain.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+
+import com.github.awvalenti.zssn.domain.enumeration.Gender;
 
 @Entity
 public class Survivor {

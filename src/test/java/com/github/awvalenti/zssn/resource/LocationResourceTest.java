@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.awvalenti.zssn.model.Location;
+import com.github.awvalenti.zssn.domain.entity.Location;
 import com.github.awvalenti.zssn.repository.LocationRepository;
 import com.github.awvalenti.zssn.repository.SurvivorRepository;
 

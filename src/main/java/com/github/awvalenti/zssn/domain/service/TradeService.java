@@ -1,7 +1,7 @@
-package com.github.awvalenti.zssn.service;
+package com.github.awvalenti.zssn.domain.service;
 
-import com.github.awvalenti.zssn.model.ItemCollection;
-import com.github.awvalenti.zssn.model.Survivor;
+import com.github.awvalenti.zssn.domain.entity.ItemCollection;
+import com.github.awvalenti.zssn.domain.entity.Survivor;
 
 public class TradeService {
 

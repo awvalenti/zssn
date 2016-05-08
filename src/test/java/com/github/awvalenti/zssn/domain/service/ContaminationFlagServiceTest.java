@@ -1,4 +1,4 @@
-package com.github.awvalenti.zssn.service;
+package com.github.awvalenti.zssn.domain.service;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
@@ -7,9 +7,10 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.awvalenti.zssn.model.Survivor;
-import com.github.awvalenti.zssn.repository.ContaminationFlagInMemoryRepository;
+import com.github.awvalenti.zssn.domain.entity.Survivor;
+import com.github.awvalenti.zssn.domain.service.ContaminationFlagService;
 import com.github.awvalenti.zssn.repository.SurvivorRepository;
+import com.github.awvalenti.zssn.testsupport.repository.ContaminationFlagInMemoryRepository;
 
 public class ContaminationFlagServiceTest {
 

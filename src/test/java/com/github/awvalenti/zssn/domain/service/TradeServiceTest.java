@@ -1,14 +1,15 @@
-package com.github.awvalenti.zssn.service;
+package com.github.awvalenti.zssn.domain.service;
 
-import static com.github.awvalenti.zssn.model.Item.*;
+import static com.github.awvalenti.zssn.domain.entity.Item.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.awvalenti.zssn.model.ItemCollection;
-import com.github.awvalenti.zssn.model.Survivor;
+import com.github.awvalenti.zssn.domain.entity.ItemCollection;
+import com.github.awvalenti.zssn.domain.entity.Survivor;
+import com.github.awvalenti.zssn.domain.service.TradeService;
 
 public class TradeServiceTest {
 

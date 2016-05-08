@@ -1,6 +1,6 @@
 package com.github.awvalenti.zssn.resource;
 
-import com.github.awvalenti.zssn.service.ContaminationFlagService;
+import com.github.awvalenti.zssn.domain.service.ContaminationFlagService;
 
 public class ContaminationFlagResource {
 

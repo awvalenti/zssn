@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import com.github.awvalenti.zssn.model.ContaminationFlag;
+import com.github.awvalenti.zssn.domain.entity.ContaminationFlag;
 
 public class ContaminationFlagDatabaseRepository implements ContaminationFlagRepository {
 

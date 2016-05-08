@@ -1,4 +1,4 @@
-package com.github.awvalenti.zssn.model;
+package com.github.awvalenti.zssn.domain.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

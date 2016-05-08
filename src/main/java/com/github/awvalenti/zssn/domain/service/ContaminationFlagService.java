@@ -1,10 +1,10 @@
-package com.github.awvalenti.zssn.service;
+package com.github.awvalenti.zssn.domain.service;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import com.github.awvalenti.zssn.model.ContaminationFlag;
-import com.github.awvalenti.zssn.model.Survivor;
+import com.github.awvalenti.zssn.domain.entity.ContaminationFlag;
+import com.github.awvalenti.zssn.domain.entity.Survivor;
 import com.github.awvalenti.zssn.repository.ContaminationFlagRepository;
 import com.github.awvalenti.zssn.repository.SurvivorRepository;
 

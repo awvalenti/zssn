@@ -1,6 +1,6 @@
 package com.github.awvalenti.zssn.resource;
 
-import static com.github.awvalenti.zssn.model.Item.*;
+import static com.github.awvalenti.zssn.domain.entity.Item.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,10 +11,10 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
-import com.github.awvalenti.zssn.model.Gender;
-import com.github.awvalenti.zssn.model.ItemCollection;
-import com.github.awvalenti.zssn.model.Location;
-import com.github.awvalenti.zssn.model.Survivor;
+import com.github.awvalenti.zssn.domain.entity.ItemCollection;
+import com.github.awvalenti.zssn.domain.entity.Location;
+import com.github.awvalenti.zssn.domain.entity.Survivor;
+import com.github.awvalenti.zssn.domain.enumeration.Gender;
 
 public class IntegrationTest {
 
