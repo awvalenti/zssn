@@ -34,7 +34,9 @@ public class ContaminationFlagService {
 		Set<Survivor> reporters = new HashSet<>();
 
 		for (ContaminationFlag flag : flagRepo.getAll()) {
-			if (flag.getFlagged().getId() == flaggedId) reporters.add(flag.getReporter());
+			if (flag.getFlagged().getId() == flaggedId) {
+				reporters.add(flag.getReporter());
+			}
 		}
 
 		return reporters.size();
