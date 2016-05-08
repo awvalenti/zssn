@@ -1,4 +1,4 @@
-package com.github.awvalenti.zssn.resource;
+package com.github.awvalenti.zssn.testsupport.testsuperclass;
 
 import static com.github.awvalenti.zssn.domain.entity.Item.*;
 

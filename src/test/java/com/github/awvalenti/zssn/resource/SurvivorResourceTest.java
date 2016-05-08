@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.awvalenti.zssn.repository.SurvivorRepository;
+import com.github.awvalenti.zssn.testsupport.testsuperclass.IntegrationTest;
 
 public class SurvivorResourceTest extends IntegrationTest {
 

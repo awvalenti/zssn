@@ -9,6 +9,7 @@ import org.junit.Test;
 import com.github.awvalenti.zssn.domain.entity.Location;
 import com.github.awvalenti.zssn.repository.LocationRepository;
 import com.github.awvalenti.zssn.repository.SurvivorRepository;
+import com.github.awvalenti.zssn.testsupport.testsuperclass.IntegrationTest;
 
 public class LocationResourceTest extends IntegrationTest {
 
