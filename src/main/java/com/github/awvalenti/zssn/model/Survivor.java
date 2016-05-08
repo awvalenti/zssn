@@ -1,14 +1,40 @@
 package com.github.awvalenti.zssn.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
+@Entity
 public class Survivor {
 
+	@Id
+	@GeneratedValue
 	private Long id;
+
+	@Column(nullable = false)
 	private String name;
-	private int age;
+
+	@Column(nullable = false)
+	private Integer age;
+
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private Gender gender;
-	private boolean zombie;
+
+	@Column(nullable = false)
+	private Boolean zombie;
+
+	@Column(nullable = false)
 	private Location location;
+
+	@JoinColumn(nullable = false)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private ItemCollection inventory;
 
 	public Survivor() {
@@ -16,6 +42,7 @@ public class Survivor {
 
 	public Survivor(long id) {
 		setId(id);
+		setZombie(false);
 	}
 
 	public Long getId() {
@@ -34,11 +61,11 @@ public class Survivor {
 		this.name = name;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
@@ -66,11 +93,11 @@ public class Survivor {
 		this.inventory = inventory;
 	}
 
-	public boolean isZombie() {
+	public Boolean isZombie() {
 		return zombie;
 	}
 
-	public void setZombie(boolean zombie) {
+	public void setZombie(Boolean zombie) {
 		this.zombie = zombie;
 	}
 

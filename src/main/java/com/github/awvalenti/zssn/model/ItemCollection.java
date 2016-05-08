@@ -2,12 +2,33 @@ package com.github.awvalenti.zssn.model;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+@Entity
 public class ItemCollection {
 
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	@Transient
 	private final Map<Item, Integer> amountsPerItem;
+
+	@Column(nullable = false)
+	@OneToMany
+	@JoinColumn(name = "itemcollection_id")
+	private final Set<ItemAmount> amounts;
 
 	/**
 	 * Creates an ItemCollection with specified items and quantities. Usage:
@@ -41,9 +62,12 @@ public class ItemCollection {
 
 	private ItemCollection(Map<Item, Integer> amountsPerItem) {
 		this.amountsPerItem = new HashMap<>(amountsPerItem);
+		amounts = new HashSet<>();
 
 		// If map does not contain all items, adds absent items with zero amount
 		Arrays.stream(Item.values()).forEach(item -> this.amountsPerItem.putIfAbsent(item, 0));
+
+		this.amountsPerItem.forEach((item, quantity) -> amounts.add(new ItemAmount(item, quantity)));
 	}
 
 	public int getTotalPoints() {

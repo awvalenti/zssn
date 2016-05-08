@@ -1,20 +1,30 @@
 package com.github.awvalenti.zssn.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Location {
 
-	private final double latitude;
-	private final double longitude;
+	@Column(nullable = false)
+	private Double latitude;
 
-	public Location(double latitude, double longitude) {
+	@Column(nullable = false)
+	private Double longitude;
+
+	public Location(Double latitude, Double longitude) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
 
-	public double getLatitude() {
+	Location() {
+	}
+
+	public Double getLatitude() {
 		return latitude;
 	}
 
-	public double getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
@@ -22,7 +32,7 @@ public class Location {
 	public boolean equals(Object otherObject) {
 		if (!(otherObject instanceof Location)) return false;
 		Location other = (Location) otherObject;
-		return this.latitude == other.latitude && this.longitude == other.longitude;
+		return this.latitude.equals(other.latitude) && this.longitude.equals(other.longitude);
 	}
 
 	@Override

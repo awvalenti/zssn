@@ -1,29 +1,23 @@
 package com.github.awvalenti.zssn.repository;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.EntityManager;
 
 import com.github.awvalenti.zssn.model.Survivor;
 
 public class SurvivorRepository {
 
-	private final List<Survivor> data;
+	private final EntityManager em;
 
-	public SurvivorRepository() {
-		this(new ArrayList<Survivor>());
-	}
-
-	public SurvivorRepository(List<Survivor> survivors) {
-		data = survivors;
+	public SurvivorRepository(EntityManager em) {
+		this.em = em;
 	}
 
 	public void add(Survivor survivor) {
-		data.add(survivor);
-		survivor.setId((long) data.size());
+		em.persist(survivor);
 	}
 
 	public Survivor getOne(long id) {
-		return data.get((int) id - 1);
+		return em.find(Survivor.class, id);
 	}
 
 }

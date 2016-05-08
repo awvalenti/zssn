@@ -1,12 +1,12 @@
 package com.github.awvalenti.zssn.resource;
 
-import com.github.awvalenti.zssn.repository.ContaminationFlagRepository;
+import com.github.awvalenti.zssn.service.ContaminationFlagService;
 
 public class ContaminationFlagResource {
 
-	private final ContaminationFlagRepository flagRepo;
+	private final ContaminationFlagService flagRepo;
 
-	public ContaminationFlagResource(ContaminationFlagRepository flagRepo) {
+	public ContaminationFlagResource(ContaminationFlagService flagRepo) {
 		this.flagRepo = flagRepo;
 	}
 

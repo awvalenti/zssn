@@ -6,24 +6,20 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.awvalenti.zssn.model.Survivor;
 import com.github.awvalenti.zssn.repository.SurvivorRepository;
 
-public class SurvivorResourceTest {
+public class SurvivorResourceTest extends IntegrationTest {
 
 	private SurvivorResource survivorResource;
 
 	@Before
 	public void setUp() throws Exception {
-		survivorResource = new SurvivorResource(new SurvivorRepository());
+		survivorResource = new SurvivorResource(new SurvivorRepository(em));
 	}
 
 	@Test
 	public void should_add_survivor() {
-		Survivor john = new Survivor();
-		john.setName("John Doe");
-
-		survivorResource.post(john);
+		survivorResource.post(createJohnDoe());
 		assertThat(survivorResource.getOne(1L).getName(), is("John Doe"));
 	}
 
