@@ -53,4 +53,26 @@ public class ItemAmount {
 		this.quantity = quantity;
 	}
 
+	public int getPoints() {
+		return item.getPoints() * quantity;
+	}
+
+	@Override
+	public boolean equals(Object other) {
+		if (!(other instanceof ItemAmount)) return false;
+
+		ItemAmount otherAmount = (ItemAmount) other;
+		return this.item.equals(otherAmount.item) && this.quantity.equals(otherAmount.quantity);
+	}
+
+	@Override
+	public int hashCode() {
+		return item.hashCode() * 4 + quantity;
+	}
+
+	@Override
+	public String toString() {
+		return item.toString() + ":" + quantity;
+	}
+
 }
