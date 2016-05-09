@@ -6,6 +6,7 @@ import javax.persistence.EntityManagerFactory;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 
 import com.github.awvalenti.zssn.domain.service.ContaminationFlagService;
+import com.github.awvalenti.zssn.domain.service.InventoryService;
 import com.github.awvalenti.zssn.domain.service.TradeService;
 import com.github.awvalenti.zssn.repository.ContaminationFlagDatabaseRepository;
 import com.github.awvalenti.zssn.repository.ContaminationFlagRepository;
@@ -18,6 +19,7 @@ public class ApplicationBinder extends AbstractBinder {
 	protected void configure() {
 		bind(ContaminationFlagService.class).to(ContaminationFlagService.class);
 		bind(TradeService.class).to(TradeService.class);
+		bind(InventoryService.class).to(InventoryService.class);
 
 		bind(SurvivorRepository.class).to(SurvivorRepository.class);
 		bind(LocationRepository.class).to(LocationRepository.class);

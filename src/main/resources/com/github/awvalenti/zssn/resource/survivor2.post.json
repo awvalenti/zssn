@@ -1,0 +1,14 @@
+{
+	"name": "Mary Jane",
+	"age": 28,
+	"gender": "FEMALE",
+	"zombie": false,
+	"location": {
+		"latitude": 3.0,
+		"longitude": 3.0
+	},
+	"inventory": {
+		"FOOD": 2,
+		"WATER": 3
+	}
+}

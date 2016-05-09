@@ -16,7 +16,7 @@ public class LocationResourceTest extends ResourceTest {
 
 	@Before
 	public void setUp() {
-		postFirstSurvivor();
+		postFirstHuman();
 	}
 
 	@Test

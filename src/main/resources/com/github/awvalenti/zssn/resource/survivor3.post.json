@@ -1,0 +1,15 @@
+{
+	"name": "Zombie of Palms",
+	"age": 98,
+	"gender": "MALE",
+	"zombie": true,
+	"location": {
+		"latitude": -10.0,
+		"longitude": -10.0
+	},
+	"inventory": {
+		"FOOD": 2,
+		"WATER": 3,
+		"AMMUNITION": 10
+	}
+}

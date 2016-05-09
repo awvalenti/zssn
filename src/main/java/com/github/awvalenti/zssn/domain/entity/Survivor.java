@@ -35,7 +35,7 @@ public class Survivor {
 	@Column(nullable = false)
 	private Location location;
 
-	@JoinColumn(nullable = false)
+	@JoinColumn(nullable = false, name = "survivor_id")
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private ItemCollection inventory;
 
@@ -44,7 +44,7 @@ public class Survivor {
 
 	public Survivor(long id) {
 		setId(id);
-		setZombie(false);
+//		setZombie(false);
 	}
 
 	public Long getId() {

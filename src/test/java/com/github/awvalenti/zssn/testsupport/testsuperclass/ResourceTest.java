@@ -30,10 +30,22 @@ public abstract class ResourceTest {
 		return ClientBuilder.newClient().target(server.getBaseUri()).path(path);
 	}
 
-	protected final Response postFirstSurvivor() {
+	protected final Response postFirstHuman() {
 		return clientForPath("survivors")
 				.request()
 				.post(Entity.json(JsonUtils.readAsString("survivor1.post.json")));
+	}
+
+	protected final Response postSecondHuman() {
+		return clientForPath("survivors")
+				.request()
+				.post(Entity.json(JsonUtils.readAsString("survivor2.post.json")));
+	}
+
+	protected final Response postFirstZombie() {
+		return clientForPath("survivors")
+				.request()
+				.post(Entity.json(JsonUtils.readAsString("survivor3.post.json")));
 	}
 
 }

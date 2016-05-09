@@ -45,4 +45,9 @@ public class SurvivorResource {
 		return LocationResource.class;
 	}
 
+	@Path("{survivorId}/inventory")
+	public Class<InventoryResource> inventory() {
+		return InventoryResource.class;
+	}
+
 }

@@ -14,7 +14,7 @@ public class SurvivorResourceTest extends ResourceTest {
 
 	@Test
 	public void should_add_survivor() {
-		Response resp = postFirstSurvivor();
+		Response resp = postFirstHuman();
 
 		assertThat(resp.getStatus(), is(201));
 
