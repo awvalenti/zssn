@@ -35,7 +35,7 @@ public class Survivor {
 	@Column(nullable = false)
 	private Location location;
 
-	@JoinColumn(nullable = false)
+//	@JoinColumn(nullable = false)
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private ItemCollection inventory;
 

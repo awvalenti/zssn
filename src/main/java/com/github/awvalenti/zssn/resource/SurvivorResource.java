@@ -1,5 +1,8 @@
 package com.github.awvalenti.zssn.resource;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -8,6 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import com.github.awvalenti.zssn.domain.entity.Survivor;
 import com.github.awvalenti.zssn.repository.SurvivorRepository;
@@ -24,8 +28,9 @@ public class SurvivorResource {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void post(Survivor survivor) {
+	public Response post(Survivor survivor) throws URISyntaxException {
 		survivorRepo.add(survivor);
+		return Response.created(new URI("survivors/" + survivor.getId())).build();
 	}
 
 	@GET

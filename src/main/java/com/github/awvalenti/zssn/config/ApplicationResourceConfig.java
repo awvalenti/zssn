@@ -12,4 +12,5 @@ public class ApplicationResourceConfig extends ResourceConfig {
 		register(new DebugExceptionMapper());
 		packages("com.github.awvalenti.zssn.resource");
 	}
+
 }

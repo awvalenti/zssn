@@ -1,6 +1,7 @@
 package com.github.awvalenti.zssn.config;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 
@@ -13,6 +14,7 @@ public class ApplicationBinder extends AbstractBinder {
 	protected void configure() {
 		bind(TradeService.class).to(TradeService.class);
 		bind(SurvivorRepository.class).to(SurvivorRepository.class);
+		bindFactory(ApplicationEntityManagerFactoryFactory.class).to(EntityManagerFactory.class);
 		bindFactory(ApplicationEntityManagerFactory.class).to(EntityManager.class);
 	}
 
