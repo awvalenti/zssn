@@ -1,4 +1,4 @@
-package com.github.awvalenti.zssn.resource;
+package com.github.awvalenti.zssn.testsupport.testsuperclass;
 
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;

@@ -8,6 +8,7 @@ import javax.ws.rs.core.Response;
 
 import org.junit.Test;
 
+import com.github.awvalenti.zssn.testsupport.testsuperclass.ResourceTest;
 import com.github.awvalenti.zssn.testsupport.util.JsonUtils;
 
 public class SurvivorResourceTest extends ResourceTest {
