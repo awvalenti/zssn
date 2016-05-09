@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class ItemAmount {
+public class ItemAmount implements Comparable<ItemAmount> {
 
 	@Id
 	@GeneratedValue
@@ -73,6 +73,11 @@ public class ItemAmount {
 	@Override
 	public String toString() {
 		return item.toString() + ":" + quantity;
+	}
+
+	@Override
+	public int compareTo(ItemAmount other) {
+		return item.compareTo(other.item);
 	}
 
 }

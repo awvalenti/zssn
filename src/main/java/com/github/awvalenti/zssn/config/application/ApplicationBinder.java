@@ -1,4 +1,4 @@
-package com.github.awvalenti.zssn.config;
+package com.github.awvalenti.zssn.config.application;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

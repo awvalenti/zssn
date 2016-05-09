@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.eclipsesource.json.JsonValue;
-import com.github.awvalenti.zssn.config.TestHttpServer;
+import com.github.awvalenti.zssn.main.TestHttpServer;
 import com.github.awvalenti.zssn.testsupport.util.JsonUtils;
 
 public class SurvivorResourceTest {

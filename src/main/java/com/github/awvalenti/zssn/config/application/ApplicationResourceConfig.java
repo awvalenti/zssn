@@ -1,4 +1,4 @@
-package com.github.awvalenti.zssn.config;
+package com.github.awvalenti.zssn.config.application;
 
 import org.glassfish.jersey.server.ResourceConfig;
 
@@ -9,7 +9,7 @@ public class ApplicationResourceConfig extends ResourceConfig {
 	public ApplicationResourceConfig() {
 		register(new ApplicationBinder());
 		register(new JacksonJaxbJsonProvider());
-		register(new DebugExceptionMapper());
+		register(new ApplicationDebugExceptionMapper());
 		packages("com.github.awvalenti.zssn.resource");
 	}
 

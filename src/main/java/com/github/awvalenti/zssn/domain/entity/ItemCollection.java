@@ -1,8 +1,11 @@
 package com.github.awvalenti.zssn.domain.entity;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
+import java.util.TreeSet;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,40 +13,50 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.github.awvalenti.zssn.config.serializer.ItemCollectionDeserializer;
+import com.github.awvalenti.zssn.config.serializer.ItemCollectionSerializer;
+
 @Entity
-public class ItemCollection {
+@JsonSerialize(using = ItemCollectionSerializer.class)
+@JsonDeserialize(using = ItemCollectionDeserializer.class)
+public class ItemCollection implements Iterable<ItemAmount> {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	@Column(nullable = false)
-	@OneToMany
+	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "itemcollection_id")
-	private Set<ItemAmount> amounts = new HashSet<>();
+	private Set<ItemAmount> amounts;
 
 	/**
 	 * Creates an ItemCollection with specified items and quantities. Usage:
-	 * ItemCollection.with(item0, quantity0, item1, quantity1, item2,
-	 * quantity2...)
+	 * ItemCollection.with(item0, quantity0, item1, quantity1, item2, quantity2...)
 	 *
 	 * @param args
 	 *            Item/quantity pairs
 	 * @return the ItemCollection
 	 */
 	public static ItemCollection with(Object... args) {
-		ItemCollection ret = new ItemCollection();
+		Set<ItemAmount> amounts = new HashSet<>();
 
 		for (int i = 0; i < args.length; i += 2) {
 			Item key = (Item) args[i];
 			Integer value = (Integer) args[i + 1];
-			ret.setQuantity(key, value);
+			amounts.add(new ItemAmount(key, value));
 		}
 
-		return ret;
+		return new ItemCollection(amounts);
 	}
 
-	private ItemCollection() {
+	public ItemCollection(Set<ItemAmount> amounts) {
+		this.amounts = amounts;
+	}
+
+	ItemCollection() {
 	}
 
 	public int getTotalPoints() {
@@ -62,6 +75,16 @@ public class ItemCollection {
 
 	public void subtract(ItemCollection other) {
 		doOperation(other, -1);
+	}
+
+	@Override
+	public Iterator<ItemAmount> iterator() {
+		// Uses TreeSet so that items will always be on the same
+		// order. This is important because the library minimal-json
+		// incorrectly takes JSON objects properties order into consideration.
+		// json.org specifies that JSON objects properties should
+		// be unordered.
+		return new TreeSet<>(amounts).iterator();
 	}
 
 	@Override

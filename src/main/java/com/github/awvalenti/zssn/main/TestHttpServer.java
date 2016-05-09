@@ -1,11 +1,11 @@
-package com.github.awvalenti.zssn.config;
+package com.github.awvalenti.zssn.main;
 
 import java.net.URI;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 
-import com.github.awvalenti.zssn.config.ApplicationResourceConfig;
+import com.github.awvalenti.zssn.config.application.ApplicationResourceConfig;
 
 public class TestHttpServer {
 

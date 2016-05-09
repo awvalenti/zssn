@@ -8,5 +8,8 @@
 		"latitude": 1.0,
 		"longitude": 1.0
 	},
-	"inventory": null
+	"inventory": {
+		"FOOD": 2,
+		"WATER": 3
+	}
 }
