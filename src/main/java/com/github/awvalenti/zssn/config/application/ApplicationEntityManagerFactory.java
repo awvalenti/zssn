@@ -27,7 +27,6 @@ public class ApplicationEntityManagerFactory implements Factory<EntityManager> {
 	}
 
 	@Override
-	@SuppressWarnings("resource")
 	public EntityManager provide() {
 		final EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
