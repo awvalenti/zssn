@@ -79,11 +79,9 @@ public class ItemCollection implements Iterable<ItemAmount> {
 
 	@Override
 	public Iterator<ItemAmount> iterator() {
-		// Uses TreeSet so that items will always be on the same
-		// order. This is important because the library minimal-json
-		// incorrectly takes JSON objects properties order into consideration.
-		// json.org specifies that JSON objects properties should
-		// be unordered.
+		// Using TreeSet so that items will always be on the same
+		// order. This shouldn't be necessary, but it is because of
+		// this: https://github.com/ralfstx/minimal-json/issues/65
 		return new TreeSet<>(amounts).iterator();
 	}
 
