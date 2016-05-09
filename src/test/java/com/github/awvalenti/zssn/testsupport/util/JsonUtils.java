@@ -14,6 +14,8 @@ public class JsonUtils {
 		InputStream stream = JsonUtils.class
 				.getResourceAsStream("/com/github/awvalenti/zssn/resource/" + filename);
 
+		if (stream == null) throw new RuntimeException("Resource '" + filename + "' not found");
+
 		try (InputStreamReader reader = new InputStreamReader(stream, Charset.forName("US-ASCII"))) {
 			return Json.parse(reader);
 		} catch (IOException e) {
