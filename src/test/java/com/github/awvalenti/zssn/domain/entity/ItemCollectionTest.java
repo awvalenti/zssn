@@ -23,13 +23,13 @@ public class ItemCollectionTest {
 	}
 
 	@Test
-	public void should_add_amounts() {
+	public void should_add_quantities() {
 		food3Water4.add(food2Ammo2);
 		assertThat(food3Water4, is(ItemCollection.with(FOOD, 5, WATER, 4, AMMUNITION, 2)));
 	}
 
 	@Test
-	public void should_subtract_amounts() {
+	public void should_subtract_quantities() {
 		food5Water1Ammo2.subtract(food2Ammo2);
 		assertThat(food5Water1Ammo2, is(ItemCollection.with(FOOD, 3, WATER, 1)));
 	}

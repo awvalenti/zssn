@@ -21,7 +21,7 @@ import com.github.awvalenti.zssn.config.serializer.ItemCollectionSerializer;
 @Entity
 @JsonSerialize(using = ItemCollectionSerializer.class)
 @JsonDeserialize(using = ItemCollectionDeserializer.class)
-public class ItemCollection implements Iterable<ItemAmount> {
+public class ItemCollection implements Iterable<ItemSlot> {
 
 	@Id
 	@GeneratedValue
@@ -30,7 +30,7 @@ public class ItemCollection implements Iterable<ItemAmount> {
 	@Column(nullable = false)
 	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "itemcollection_id")
-	private Set<ItemAmount> amounts;
+	private Set<ItemSlot> slots;
 
 	/**
 	 * Creates an ItemCollection with specified items and quantities. Usage:
@@ -41,19 +41,19 @@ public class ItemCollection implements Iterable<ItemAmount> {
 	 * @return the ItemCollection
 	 */
 	public static ItemCollection with(Object... args) {
-		Set<ItemAmount> amounts = new HashSet<>();
+		Set<ItemSlot> slots = new HashSet<>();
 
 		for (int i = 0; i < args.length; i += 2) {
 			Item key = (Item) args[i];
 			Integer value = (Integer) args[i + 1];
-			amounts.add(new ItemAmount(key, value));
+			slots.add(new ItemSlot(key, value));
 		}
 
-		return new ItemCollection(amounts);
+		return new ItemCollection(slots);
 	}
 
-	public ItemCollection(Set<ItemAmount> amounts) {
-		this.amounts = amounts;
+	public ItemCollection(Set<ItemSlot> slots) {
+		this.slots = slots;
 	}
 
 	ItemCollection() {
@@ -62,8 +62,8 @@ public class ItemCollection implements Iterable<ItemAmount> {
 	public int getTotalPoints() {
 		int total = 0;
 
-		for (ItemAmount amount : amounts) {
-			total += amount.getPoints();
+		for (ItemSlot slot : slots) {
+			total += slot.getPoints();
 		}
 
 		return total;
@@ -78,26 +78,26 @@ public class ItemCollection implements Iterable<ItemAmount> {
 	}
 
 	@Override
-	public Iterator<ItemAmount> iterator() {
+	public Iterator<ItemSlot> iterator() {
 		// Using TreeSet so that items will always be on the same
 		// order. This shouldn't be necessary, but it is because of
 		// this: https://github.com/ralfstx/minimal-json/issues/65
-		return new TreeSet<>(amounts).iterator();
+		return new TreeSet<>(slots).iterator();
 	}
 
 	@Override
 	public String toString() {
-		return amounts.toString();
+		return slots.toString();
 	}
 
 	@Override
 	public boolean equals(Object other) {
-		// For an unknow reason, return amounts.equals(o.amounts) doesn't work.
-		// So, we do the work manually.
-
 		if (!(other instanceof ItemCollection)) return false;
 
 		ItemCollection o = (ItemCollection) other;
+
+		// For unknown reasons, simply returning this.slots.equals(o.slots) doesn't work.
+		// So, we do the work manually.
 
 		for (Item item : Item.values()) {
 			if (this.getQuantity(item) != o.getQuantity(item)) {
@@ -110,24 +110,24 @@ public class ItemCollection implements Iterable<ItemAmount> {
 
 	@Override
 	public int hashCode() {
-		return amounts.hashCode();
+		return slots.hashCode();
 	}
 
 	private void doOperation(ItemCollection other, int factor) {
-		for (ItemAmount otherAmount : other.amounts) {
-			Item item = otherAmount.getItem();
+		for (ItemSlot otherSlot : other.slots) {
+			Item item = otherSlot.getItem();
 
 			int myQuantity = this.getQuantity(item);
-			int theirQuantity = otherAmount.getQuantity();
+			int theirQuantity = otherSlot.getQuantity();
 
 			this.setQuantity(item, myQuantity + factor * theirQuantity);
 		}
 	}
 
 	private int getQuantity(Item item) {
-		for (ItemAmount amount : amounts) {
-			if (amount.getItem().equals(item)) {
-				return amount.getQuantity();
+		for (ItemSlot slot : slots) {
+			if (slot.getItem().equals(item)) {
+				return slot.getQuantity();
 			}
 		}
 
@@ -135,18 +135,18 @@ public class ItemCollection implements Iterable<ItemAmount> {
 	}
 
 	private void setQuantity(Item item, int quantity) {
-		for (ItemAmount amount : amounts) {
-			if (amount.getItem().equals(item)) {
+		for (ItemSlot slot : slots) {
+			if (slot.getItem().equals(item)) {
 				if (quantity == 0) {
-					amounts.remove(amount);
+					slots.remove(slot);
 				} else {
-					amount.setQuantity(quantity);
+					slot.setQuantity(quantity);
 				}
 				return;
 			}
 		}
 
-		amounts.add(new ItemAmount(item, quantity));
+		slots.add(new ItemSlot(item, quantity));
 	}
 
 }

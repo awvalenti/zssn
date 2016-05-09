@@ -45,14 +45,14 @@ public class TradeServiceTest {
 	}
 
 	@Test
-	public void trade_involving_humans_with_different_amount_of_points_should_be_rejected() {
+	public void trade_involving_humans_with_different_points_should_be_rejected() {
 		ItemCollection offer1 = items(WATER, 1, MEDICATION, 1);
 		ItemCollection offer2 = items(FOOD, 20);
 		assertThat(tradeService.validate(human1, offer1, human2, offer2), is(false));
 	}
 
 	@Test
-	public void trade_involving_humans_with_same_amount_of_points_should_be_accepted() {
+	public void trade_involving_humans_with_same_points_should_be_accepted() {
 		ItemCollection offer1 = items(WATER, 1, MEDICATION, 1);
 		ItemCollection offer2 = items(FOOD, 2);
 		assertThat(tradeService.validate(human1, offer1, human2, offer2), is(true));

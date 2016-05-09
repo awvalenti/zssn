@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.node.NumericNode;
 import com.github.awvalenti.zssn.domain.entity.Item;
-import com.github.awvalenti.zssn.domain.entity.ItemAmount;
+import com.github.awvalenti.zssn.domain.entity.ItemSlot;
 import com.github.awvalenti.zssn.domain.entity.ItemCollection;
 
 public class ItemCollectionDeserializer extends JsonDeserializer<ItemCollection> {
@@ -22,14 +22,14 @@ public class ItemCollectionDeserializer extends JsonDeserializer<ItemCollection>
 			throws IOException, JsonProcessingException {
 		TreeNode node = p.getCodec().readTree(p);
 
-		Set<ItemAmount> amounts = new TreeSet<>();
+		Set<ItemSlot> slots = new TreeSet<>();
 		for (Iterator<String> iterator = node.fieldNames(); iterator.hasNext();) {
 			String itemName = iterator.next();
 			int quantity = ((NumericNode) node.get(itemName)).asInt();
-			amounts.add(new ItemAmount(Item.valueOf(itemName), quantity));
+			slots.add(new ItemSlot(Item.valueOf(itemName), quantity));
 		}
 
-		return new ItemCollection(amounts);
+		return new ItemCollection(slots);
 	}
 
 }

@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class ItemAmount implements Comparable<ItemAmount> {
+public class ItemSlot implements Comparable<ItemSlot> {
 
 	@Id
 	@GeneratedValue
@@ -21,12 +21,12 @@ public class ItemAmount implements Comparable<ItemAmount> {
 	@Column(nullable = false)
 	private Integer quantity;
 
-	public ItemAmount(Item item, Integer quantity) {
+	public ItemSlot(Item item, Integer quantity) {
 		this.item = item;
 		this.quantity = quantity;
 	}
 
-	ItemAmount() {
+	ItemSlot() {
 	}
 
 	public Long getId() {
@@ -59,10 +59,10 @@ public class ItemAmount implements Comparable<ItemAmount> {
 
 	@Override
 	public boolean equals(Object other) {
-		if (!(other instanceof ItemAmount)) return false;
+		if (!(other instanceof ItemSlot)) return false;
 
-		ItemAmount otherAmount = (ItemAmount) other;
-		return this.item.equals(otherAmount.item) && this.quantity.equals(otherAmount.quantity);
+		ItemSlot otherSlot = (ItemSlot) other;
+		return this.item.equals(otherSlot.item) && this.quantity.equals(otherSlot.quantity);
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class ItemAmount implements Comparable<ItemAmount> {
 	}
 
 	@Override
-	public int compareTo(ItemAmount other) {
+	public int compareTo(ItemSlot other) {
 		return item.compareTo(other.item);
 	}
 
