@@ -20,11 +20,11 @@ public class ContaminationFlagServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		survivorRepo = mock(SurvivorRepository.class);
-		when(survivorRepo.getOne(1L)).thenReturn(new Survivor(1L));
-		when(survivorRepo.getOne(2L)).thenReturn(new Survivor(2L));
-		when(survivorRepo.getOne(3L)).thenReturn(new Survivor(3L));
-		when(survivorRepo.getOne(4L)).thenReturn(new Survivor(4L));
-		when(survivorRepo.getOne(5L)).thenReturn(new Survivor(5L));
+		when(survivorRepo.getOne(1L)).thenReturn(Survivor.human(1L));
+		when(survivorRepo.getOne(2L)).thenReturn(Survivor.human(2L));
+		when(survivorRepo.getOne(3L)).thenReturn(Survivor.human(3L));
+		when(survivorRepo.getOne(4L)).thenReturn(Survivor.human(4L));
+		when(survivorRepo.getOne(5L)).thenReturn(Survivor.human(5L));
 
 		flagService = new ContaminationFlagService(new ContaminationFlagInMemoryRepository(), survivorRepo);
 	}
