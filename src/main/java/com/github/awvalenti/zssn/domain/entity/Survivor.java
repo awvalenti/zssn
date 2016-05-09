@@ -44,7 +44,12 @@ public class Survivor {
 
 	public Survivor(long id) {
 		setId(id);
-//		setZombie(false);
+	}
+
+	public static Survivor human(long id) {
+		Survivor ret = new Survivor(id);
+		ret.setZombie(false);
+		return ret;
 	}
 
 	public Long getId() {
