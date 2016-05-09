@@ -19,25 +19,30 @@ import com.github.awvalenti.zssn.repository.SurvivorRepository;
 @Path("survivors")
 public class SurvivorResource {
 
-	private final SurvivorRepository survivorRepo;
+	private final SurvivorRepository repo;
 
 	@Inject
-	public SurvivorResource(SurvivorRepository survivorRepo) {
-		this.survivorRepo = survivorRepo;
+	public SurvivorResource(SurvivorRepository repo) {
+		this.repo = repo;
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response post(Survivor survivor) throws URISyntaxException {
-		survivorRepo.add(survivor);
+		repo.add(survivor);
 		return Response.created(new URI("survivors/" + survivor.getId())).build();
 	}
 
 	@GET
-	@Path("{id}")
+	@Path("{survivorId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Survivor getOne(@PathParam("id") long id) {
-		return survivorRepo.getOne(id);
+	public Survivor getOne(@PathParam("survivorId") long id) {
+		return repo.getOne(id);
+	}
+
+	@Path("{survivorId}/location")
+	public Class<LocationResource> location() {
+		return LocationResource.class;
 	}
 
 }

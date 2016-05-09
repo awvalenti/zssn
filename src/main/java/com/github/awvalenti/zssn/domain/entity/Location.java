@@ -40,4 +40,9 @@ public class Location {
 		return (int) (latitude * 512 + longitude);
 	}
 
+	@Override
+	public String toString() {
+		return "[" + latitude + ", " + longitude + "]";
+	}
+
 }

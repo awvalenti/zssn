@@ -1,11 +1,14 @@
 package com.github.awvalenti.zssn.repository;
 
+import javax.inject.Inject;
+
 import com.github.awvalenti.zssn.domain.entity.Location;
 
 public class LocationRepository {
 
 	private final SurvivorRepository survivorRepo;
 
+	@Inject
 	public LocationRepository(SurvivorRepository survivorRepo) {
 		this.survivorRepo = survivorRepo;
 	}
