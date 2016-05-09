@@ -52,6 +52,12 @@ public class Survivor {
 		return ret;
 	}
 
+	public static Survivor zombie(long id) {
+		Survivor ret = new Survivor(id);
+		ret.setZombie(true);
+		return ret;
+	}
+
 	public Long getId() {
 		return id;
 	}

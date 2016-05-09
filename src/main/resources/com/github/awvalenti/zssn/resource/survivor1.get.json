@@ -9,7 +9,7 @@
 		"longitude": 1.0
 	},
 	"inventory": {
-		"FOOD": 2,
+		"MEDICATION": 2,
 		"WATER": 3
 	}
 }

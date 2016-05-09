@@ -3,13 +3,16 @@ package com.github.awvalenti.zssn.domain.service;
 import static com.github.awvalenti.zssn.domain.entity.Item.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import com.github.awvalenti.zssn.domain.entity.ItemCollection;
 import com.github.awvalenti.zssn.domain.entity.Survivor;
-import com.github.awvalenti.zssn.domain.service.TradeService;
+import com.github.awvalenti.zssn.domain.entity.Trade;
+import com.github.awvalenti.zssn.domain.service.exception.InvalidTrade;
+import com.github.awvalenti.zssn.repository.SurvivorRepository;
 
 public class TradeServiceTest {
 
@@ -17,31 +20,32 @@ public class TradeServiceTest {
 
 	private Survivor human1;
 	private Survivor human2;
-	private Survivor zombie1;
-	private Survivor zombie2;
+	private Survivor zombie3;
+	private Survivor zombie4;
 
 	@Before
 	public void setUp() {
-		tradeService = new TradeService();
+		human1 = Survivor.human(1);
+		human2 = Survivor.human(2);
+		zombie3 = Survivor.zombie(3);
+		zombie4 = Survivor.zombie(4);
 
-		human1 = new Survivor();
-		human1.setZombie(false);
-		human2 = new Survivor();
-		human2.setZombie(false);
+		SurvivorRepository repo = mock(SurvivorRepository.class);
+		when(repo.getOne(1L)).thenReturn(human1);
+		when(repo.getOne(2L)).thenReturn(human2);
+		when(repo.getOne(3L)).thenReturn(zombie3);
+		when(repo.getOne(4L)).thenReturn(zombie4);
 
-		zombie1 = new Survivor();
-		zombie1.setZombie(true);
-		zombie2 = new Survivor();
-		zombie2.setZombie(true);
+		tradeService = new TradeService(repo);
 	}
 
 	@Test
 	public void trade_involving_zombie_should_be_rejected() {
 		ItemCollection offer1 = items(FOOD, 1);
 		ItemCollection offer2 = items(FOOD, 1);
-		assertThat(tradeService.validate(human1, offer1, zombie2, offer2), is(false));
-		assertThat(tradeService.validate(zombie1, offer1, human2, offer2), is(false));
-		assertThat(tradeService.validate(zombie1, offer1, zombie2, offer2), is(false));
+		assertThat(tradeService.validate(human1, offer1, zombie4, offer2), is(false));
+		assertThat(tradeService.validate(zombie3, offer1, human2, offer2), is(false));
+		assertThat(tradeService.validate(zombie3, offer1, zombie4, offer2), is(false));
 	}
 
 	@Test
@@ -59,14 +63,14 @@ public class TradeServiceTest {
 	}
 
 	@Test
-	public void accepted_trade_should_transfer_items_between_traders() {
+	public void accepted_trade_should_transfer_items_between_traders() throws InvalidTrade {
 		human1.setInventory(items(WATER, 11, MEDICATION, 11, FOOD, 1, AMMUNITION, 2));
 		ItemCollection offer1 = items(WATER, 1, MEDICATION, 1);
 
 		human2.setInventory(items(FOOD, 2));
 		ItemCollection offer2 = items(FOOD, 2);
 
-		tradeService.trade(human1, offer1, human2, offer2);
+		tradeService.trade(new Trade(1L, 2L, offer1, offer2));
 		assertThat(human1.getInventory(), is(items(WATER, 10, MEDICATION, 10, FOOD, 3, AMMUNITION, 2)));
 		assertThat(human2.getInventory(), is(items(WATER, 1, MEDICATION, 1)));
 	}

@@ -1,0 +1,10 @@
+{
+	"trader1Id": 1,
+	"offer1": {
+		"MEDICATION": 2
+	},
+	"trader2Id": 2,
+	"offer2": {
+		"WATER": 1
+	}
+}

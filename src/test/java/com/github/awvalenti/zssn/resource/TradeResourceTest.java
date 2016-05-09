@@ -3,31 +3,44 @@ package com.github.awvalenti.zssn.resource;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
-import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
+import org.junit.Before;
 import org.junit.Test;
 
-import com.github.awvalenti.zssn.main.TestHttpServer;
+import com.github.awvalenti.zssn.testsupport.testsuperclass.ResourceTest;
+import com.github.awvalenti.zssn.testsupport.util.JsonUtils;
 
-public class TradeResourceTest {
+public class TradeResourceTest extends ResourceTest {
+
+	@Before
+	public void setUp() {
+		postFirstHuman();
+		postSecondHuman();
+	}
 
 	@Test
-	public void should_be_able_to_trade() {
-		TestHttpServer server = new TestHttpServer();
+	public void should_trade_items() {
+		Response resp = clientForPath("trades")
+				.request()
+				.post(Entity.json(JsonUtils.readAsString("trade1.post.json")));
 
-		server.start();
+		assertThat(resp.getStatus(), is(200));
 
-		String responseBody = ClientBuilder.newClient().target(server.getBaseUri())
-				.path("trades")
-				.request(MediaType.APPLICATION_JSON)
-				.post(Entity.text("test"))
-				.readEntity(String.class);
+		String receivedJson1 = clientForPath("survivors/1/inventory")
+				.request()
+				.get(String.class);
 
-		assertThat(responseBody, is("Ok"));
+		assertThat(JsonUtils.parse(receivedJson1),
+				is(JsonUtils.readAsJsonValue("trade1.inventory1.json")));
 
-		server.stop();
+		String receivedJson2 = clientForPath("survivors/2/inventory")
+				.request()
+				.get(String.class);
+
+		assertThat(JsonUtils.parse(receivedJson2),
+				is(JsonUtils.readAsJsonValue("trade1.inventory2.json")));
 	}
 
 }
