@@ -22,6 +22,3 @@
   survivors flag them as contaminated. This is unnecessary,
   since we could determine who is a zombie by counting the flags
   every time. But marking should make the operation faster.
-  
-- There are currently mixed responsibilities for repositories
-  and resources classes
